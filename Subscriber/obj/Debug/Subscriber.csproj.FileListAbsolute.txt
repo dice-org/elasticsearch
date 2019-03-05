@@ -115,3 +115,7 @@ C:\Users\dexter\source\repos\Elastic\Subscriber\obj\Debug\Subscriber.pdb
 C:\Users\dexter\source\repos\Elastic\Subscriber\bin\Debug\EasyNetQ.Management.Client.dll
 C:\Users\dexter\source\repos\Elastic\Subscriber\bin\Debug\JetBrains.Annotations.dll
 C:\Users\dexter\source\repos\Elastic\Subscriber\bin\Debug\JetBrains.Annotations.xml
+C:\Users\dexter\source\repos\Elastic\Subscriber\bin\Debug\Elasticsearch.Net.dll
+C:\Users\dexter\source\repos\Elastic\Subscriber\bin\Debug\Nest.dll
+C:\Users\dexter\source\repos\Elastic\Subscriber\bin\Debug\Elasticsearch.Net.xml
+C:\Users\dexter\source\repos\Elastic\Subscriber\bin\Debug\Nest.xml

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Domain.ConnectionFactory;
 using Domain.Entities;
 using Domain.ViewModels;
+using EasyNetQ.Topology;
 
 namespace Domain.Supervisor
 {
@@ -17,30 +18,26 @@ namespace Domain.Supervisor
         {
             _IElasticConnection = elasticConnection;
         }
-        public Task<EmployeeViewModel> AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken))
+        public EmployeeViewModel AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken))
         {
             using (var bus = _IElasticConnection.GetBus())
             {
                 Console.WriteLine("Enter a message. 'Quit' to quit.");
 
 
-
-
-               // var exchange = bus.Advanced.ExchangeDeclare("elastic2", ExchangeType.Topic);
-                //var queue = bus.Advanced.QueueDeclare("elastic_queue2");
-             //   bus.Advanced.Bind(exchange, queue, "#");
-
                 bus.Publish(new Employee
-                    {
-                        FirstName = input.FirstName,
-                        LastName=input.LastName
-                        
-                    });
-                
+                {
+                    //Id =input.Id,
+                    FirstName = input.FirstName,
+                    LastName = input.LastName
+
+                });
+              //  bus.Dispose();    
             }
 
-
-            throw new NotImplementedException();
+            
+            return input;
+           // throw new NotImplementedException();
         }
 
         public Task<List<EmployeeViewModel>> GetEmployees(CancellationToken ct = default(CancellationToken))

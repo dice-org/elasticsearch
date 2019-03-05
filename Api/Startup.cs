@@ -28,7 +28,7 @@ namespace Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IEmployeeSupervisor, EmployeeSupervisor>();
-            services.AddSingleton<IElasticConnection, ElasticConnection>();
+            services.AddScoped<IElasticConnection, ElasticConnection>();
 
         }
 

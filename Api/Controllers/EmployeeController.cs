@@ -36,9 +36,10 @@ namespace Api.Controllers
 
         // POST: api/Employee
         [HttpPost]
-        public void Post([FromBody] EmployeeViewModel value)
+        public IActionResult Post([FromBody] EmployeeViewModel value)
         {
-            _employeeSupervisor.AddEmployee(value);
+            return new ObjectResult(_employeeSupervisor.AddEmployee(value));
+             
         }
 
         // PUT: api/Employee/5

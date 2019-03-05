@@ -9,7 +9,7 @@ namespace Domain.Supervisor
 {
     public interface IEmployeeSupervisor
     {
-        Task<EmployeeViewModel> AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken));
+        EmployeeViewModel AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken));
 
 
         Task<List<EmployeeViewModel>> GetEmployees(CancellationToken ct = default(CancellationToken));

@@ -2,6 +2,7 @@
 using EasyNetQ;
 using EasyNetQ.Management.Client;
 using EasyNetQ.Management.Client.Model;
+using Nest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,40 +17,16 @@ namespace Subscriber
         {
             Subscribe();
         }
-        static   void Subscribe()
+        static void Subscribe()
         {
             //Console.WriteLine("Enter 1 to publish , 2 to Subscribe ");
 
             using (var subbus = RabbitHutch.CreateBus("host=localhost"))
             {
                 subbus.Subscribe<Employee>("test", HandleTextMessage);
+                //  subbus.Subscribe<Message>("test", HandleTextMessage);
 
-                //var managementClient = new ManagementClient("http://localhost", "guest", "guest");
-                ////var queues = await managementClient.GetQueuesAsync();
-                ////foreach (var queue in queues)
-                ////{
-                ////    Console.Out.WriteLine("queue.Name = {0}", queue.Name);
-
-                ////}
-                //var vhost = await managementClient.GetVhostAsync("/");
-
-                //var queue =  await managementClient.GetQueueAsync("elastic_queue2", vhost);
-                //   Console.Out.WriteLine("queue.Name = {0}", queue.Name);
-
-                //var bindings = managementClient.GetBindingsForQueueAsync(queue);
-
-                //// subbus.Advanced.QueuePurge(queue);
-                ////  Message message = new Message { MessageDescription = "test" };
-                ////  Insert(message);
-                //Ackmodes ackmodes = new Ackmodes();
-                //var criteria = new GetMessagesCriteria(1,ackmodes);
-
-                //var messages = await managementClient.GetMessagesFromQueueAsync(queue, criteria);
-
-                //foreach (var message in messages)
-                //{
-                //    Console.Out.WriteLine("message = {0}", message);
-                //}
+               
 
                 Console.WriteLine("Listening for messages. Hit <return> to quit.");
                 Console.ReadLine();
@@ -57,19 +34,34 @@ namespace Subscriber
             }
         }
 
+        static void AddToElastic( Employee employee)
+        {
+            var node = new Uri("http://localhost:9200");
+            var settings = new ConnectionSettings(node);
+            var client = new ElasticClient(settings);
+          
+            var response = client.Index(employee, idx => idx.Index("employeesindex")); //or specify index via settings.DefaultIndex("mytweetindex");
+        }
 
-            static void HandleTextMessage(Employee employee)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Got message: {0}", employee.FirstName);
-                Console.ResetColor();
+        static void HandleTextMessage(Employee employee)
+        {
+            AddToElastic(employee);
 
-            }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Got message: {0}", employee.FirstName);
+            Console.WriteLine("Got message: {0}", employee.LastName);
+          //  Console.WriteLine("Got message: {0}", employee.Id);
 
-
+            Console.ResetColor();
 
         }
 
 
-    
+
+
+
+    }
+
+
+
 }
