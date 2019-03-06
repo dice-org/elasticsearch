@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "d1cc3bd68650534adc579a3f8bcad2c811a6c857"
+    "signature": "c871c347cb9cae82b9405be6f24da6a2cc6be45a"
   },
   "compilationOptions": {
     "defines": [
@@ -30,6 +30,7 @@
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.0",
+          "NEST": "6.5.0",
           "System.Linq": "4.3.0"
         },
         "runtime": {
@@ -52,6 +53,17 @@
         },
         "compile": {
           "lib/netstandard2.0/EasyNetQ.dll": {}
+        }
+      },
+      "Elasticsearch.Net/6.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.5.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
         }
       },
       "EntityFramework/6.2.0": {
@@ -398,6 +410,20 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "NEST/6.5.0": {
+        "dependencies": {
+          "Elasticsearch.Net": "6.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.5.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.0"
@@ -699,7 +725,8 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
-          "EasyNetQ": "3.4.0"
+          "EasyNetQ": "3.4.0",
+          "NEST": "6.5.0"
         },
         "runtime": {
           "Domain.dll": {}
@@ -3736,6 +3763,13 @@
       "path": "easynetq/3.4.0",
       "hashPath": "easynetq.3.4.0.nupkg.sha512"
     },
+    "Elasticsearch.Net/6.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jVPr2vBydd2/xs8xi2XdTklOw4Ztnu3If1lPYtYpyzqlmk4LlvqQv64bKtKZniWVGEIAOTWTxxmQVdqUAp/DrA==",
+      "path": "elasticsearch.net/6.5.0",
+      "hashPath": "elasticsearch.net.6.5.0.nupkg.sha512"
+    },
     "EntityFramework/6.2.0": {
       "type": "package",
       "serviceable": true,
@@ -3861,6 +3895,13 @@
       "sha512": "sha512-9ZQKCWxH7Ijp9BfahvL2Zyf1cJIk8XYLF6Yjzr2yi0b2cOut/HQ31qf1ThHAgCc3WiZMdnWcfJCgN82/0UunxA==",
       "path": "microsoft.win32.primitives/4.3.0",
       "hashPath": "microsoft.win32.primitives.4.3.0.nupkg.sha512"
+    },
+    "NEST/6.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+7xYst0hz36vByjQLhx4AYqiV1fX29PmS6ztiShlZerh48UtPzXtgoDGWcpcd88b+G5gxjpXDYDMqbB/Exv58g==",
+      "path": "nest/6.5.0",
+      "hashPath": "nest.6.5.0.nupkg.sha512"
     },
     "NETStandard.Library/2.0.3": {
       "type": "package",

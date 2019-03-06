@@ -6,6 +6,7 @@ using Domain.Supervisor;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Nest;
 
 namespace Api.Controllers
 {
@@ -14,17 +15,21 @@ namespace Api.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeSupervisor _employeeSupervisor;
+        private readonly IElasticClient _elasticClient;
 
-        public EmployeeController(IEmployeeSupervisor employeeSupervisor)
+        public EmployeeController(IEmployeeSupervisor employeeSupervisor, IElasticClient elasticClient)
         {
             _employeeSupervisor = employeeSupervisor;
+            _elasticClient = elasticClient;
+
         }
 
         // GET: api/Employee
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult  Get()
         {
-            return new string[] { "value1", "value2" };
+            return new ObjectResult(_employeeSupervisor.GetEmployees());
+           // return new string[] { "value1", "value2" };
         }
 
         // GET: api/Employee/5

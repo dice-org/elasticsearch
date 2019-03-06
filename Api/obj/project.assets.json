@@ -15,6 +15,15 @@
           "lib/netstandard2.0/EasyNetQ.dll": {}
         }
       },
+      "Elasticsearch.Net/6.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+        }
+      },
       "EntityFramework/6.2.0": {
         "type": "package",
         "compile": {
@@ -2879,6 +2888,18 @@
           }
         }
       },
+      "NEST/6.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "6.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -4933,7 +4954,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "EasyNetQ": "3.4.0"
+          "EasyNetQ": "3.4.0",
+          "NEST": "6.5.0"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -4956,6 +4978,21 @@
         "easynetq.nuspec",
         "lib/net451/EasyNetQ.dll",
         "lib/netstandard2.0/EasyNetQ.dll"
+      ]
+    },
+    "Elasticsearch.Net/6.5.0": {
+      "sha512": "jVPr2vBydd2/xs8xi2XdTklOw4Ztnu3If1lPYtYpyzqlmk4LlvqQv64bKtKZniWVGEIAOTWTxxmQVdqUAp/DrA==",
+      "type": "package",
+      "path": "elasticsearch.net/6.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "elasticsearch.net.6.5.0.nupkg.sha512",
+        "elasticsearch.net.nuspec",
+        "lib/net461/Elasticsearch.Net.dll",
+        "lib/net461/Elasticsearch.Net.xml",
+        "lib/netstandard2.0/Elasticsearch.Net.dll",
+        "lib/netstandard2.0/Elasticsearch.Net.xml"
       ]
     },
     "EntityFramework/6.2.0": {
@@ -8219,6 +8256,21 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "NEST/6.5.0": {
+      "sha512": "+7xYst0hz36vByjQLhx4AYqiV1fX29PmS6ztiShlZerh48UtPzXtgoDGWcpcd88b+G5gxjpXDYDMqbB/Exv58g==",
+      "type": "package",
+      "path": "nest/6.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Nest.dll",
+        "lib/net461/Nest.xml",
+        "lib/netstandard2.0/Nest.dll",
+        "lib/netstandard2.0/Nest.xml",
+        "nest.6.5.0.nupkg.sha512",
+        "nest.nuspec"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -13490,6 +13542,7 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.0",
+      "NEST >= 6.5.0",
       "System.Linq >= 4.3.0"
     ]
   },
@@ -13561,6 +13614,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "NEST": {
+            "target": "Package",
+            "version": "[6.5.0, )"
           },
           "System.Linq": {
             "target": "Package",

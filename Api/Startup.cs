@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.ElasticsearchExtensions;
 using Domain.ConnectionFactory;
 using Domain.Supervisor;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +21,7 @@ namespace Api
         {
             Configuration = configuration;
         }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public IConfiguration Configuration { get; }
 
@@ -29,6 +31,8 @@ namespace Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IEmployeeSupervisor, EmployeeSupervisor>();
             services.AddScoped<IElasticConnection, ElasticConnection>();
+            services.AddElasticsearch(Configuration);
+          
 
         }
 

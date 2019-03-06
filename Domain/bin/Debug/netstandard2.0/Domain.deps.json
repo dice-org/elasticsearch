@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "61cff65ca88de5ad6214fd91e3c44c45acf98a8a"
+    "signature": "a22bbf0d575c33d482afb2a0b372904e0e8aa8a7"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,6 +10,7 @@
       "Domain/1.0.0": {
         "dependencies": {
           "EasyNetQ": "3.4.0",
+          "NEST": "6.5.0",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
@@ -25,6 +26,14 @@
           "lib/netstandard2.0/EasyNetQ.dll": {
             "assemblyVersion": "3.4.0.0",
             "fileVersion": "3.4.0.0"
+          }
+        }
+      },
+      "Elasticsearch.Net/6.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.5.0.0"
           }
         }
       },
@@ -61,6 +70,17 @@
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
+        }
+      },
+      "NEST/6.5.0": {
+        "dependencies": {
+          "Elasticsearch.Net": "6.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.5.0.0"
+          }
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -990,6 +1010,13 @@
       "path": "easynetq/3.4.0",
       "hashPath": "easynetq.3.4.0.nupkg.sha512"
     },
+    "Elasticsearch.Net/6.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jVPr2vBydd2/xs8xi2XdTklOw4Ztnu3If1lPYtYpyzqlmk4LlvqQv64bKtKZniWVGEIAOTWTxxmQVdqUAp/DrA==",
+      "path": "elasticsearch.net/6.5.0",
+      "hashPath": "elasticsearch.net.6.5.0.nupkg.sha512"
+    },
     "Microsoft.CSharp/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1017,6 +1044,13 @@
       "sha512": "sha512-9ZQKCWxH7Ijp9BfahvL2Zyf1cJIk8XYLF6Yjzr2yi0b2cOut/HQ31qf1ThHAgCc3WiZMdnWcfJCgN82/0UunxA==",
       "path": "microsoft.win32.primitives/4.3.0",
       "hashPath": "microsoft.win32.primitives.4.3.0.nupkg.sha512"
+    },
+    "NEST/6.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+7xYst0hz36vByjQLhx4AYqiV1fX29PmS6ztiShlZerh48UtPzXtgoDGWcpcd88b+G5gxjpXDYDMqbB/Exv58g==",
+      "path": "nest/6.5.0",
+      "hashPath": "nest.6.5.0.nupkg.sha512"
     },
     "NETStandard.Library/2.0.3": {
       "type": "package",

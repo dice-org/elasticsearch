@@ -15,6 +15,15 @@
           "lib/netstandard2.0/EasyNetQ.dll": {}
         }
       },
+      "Elasticsearch.Net/6.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -69,6 +78,18 @@
         },
         "compile": {
           "ref/netstandard1.3/_._": {}
+        }
+      },
+      "NEST/6.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "6.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -1387,6 +1408,21 @@
         "lib/netstandard2.0/EasyNetQ.dll"
       ]
     },
+    "Elasticsearch.Net/6.5.0": {
+      "sha512": "jVPr2vBydd2/xs8xi2XdTklOw4Ztnu3If1lPYtYpyzqlmk4LlvqQv64bKtKZniWVGEIAOTWTxxmQVdqUAp/DrA==",
+      "type": "package",
+      "path": "elasticsearch.net/6.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "elasticsearch.net.6.5.0.nupkg.sha512",
+        "elasticsearch.net.nuspec",
+        "lib/net461/Elasticsearch.Net.dll",
+        "lib/net461/Elasticsearch.Net.xml",
+        "lib/netstandard2.0/Elasticsearch.Net.dll",
+        "lib/netstandard2.0/Elasticsearch.Net.xml"
+      ]
+    },
     "Microsoft.CSharp/4.3.0": {
       "sha512": "P+MBhIM0YX+JqROuf7i306ZLJEjQYA9uUyRDE+OqwUI5sh41e2ZbPQV3LfAPh+29cmceE1pUffXsGfR4eMY3KA==",
       "type": "package",
@@ -1509,6 +1545,21 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "NEST/6.5.0": {
+      "sha512": "+7xYst0hz36vByjQLhx4AYqiV1fX29PmS6ztiShlZerh48UtPzXtgoDGWcpcd88b+G5gxjpXDYDMqbB/Exv58g==",
+      "type": "package",
+      "path": "nest/6.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Nest.dll",
+        "lib/net461/Nest.xml",
+        "lib/netstandard2.0/Nest.dll",
+        "lib/netstandard2.0/Nest.xml",
+        "nest.6.5.0.nupkg.sha512",
+        "nest.nuspec"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -5087,6 +5138,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "EasyNetQ >= 3.4.0",
+      "NEST >= 6.5.0",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -5134,6 +5186,10 @@
           "EasyNetQ": {
             "target": "Package",
             "version": "[3.4.0, )"
+          },
+          "NEST": {
+            "target": "Package",
+            "version": "[6.5.0, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

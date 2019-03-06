@@ -12,6 +12,6 @@ namespace Domain.Supervisor
         EmployeeViewModel AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken));
 
 
-        Task<List<EmployeeViewModel>> GetEmployees(CancellationToken ct = default(CancellationToken));
+        object GetEmployees(CancellationToken ct = default(CancellationToken));
     }
 }
