@@ -29,7 +29,6 @@ namespace Api.Controllers
         public IActionResult  Get()
         {
             return new ObjectResult(_employeeSupervisor.GetEmployees());
-           // return new string[] { "value1", "value2" };
         }
 
         // GET: api/Employee/5
@@ -49,14 +48,17 @@ namespace Api.Controllers
 
         // PUT: api/Employee/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] EmployeeViewModel value)
+        public IActionResult Put(int id, [FromBody] EmployeeViewModel employee)
         {
+            return new ObjectResult(_employeeSupervisor.UpdateEmployee(id, employee));
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            return new ObjectResult(_employeeSupervisor.DeleteEmployee(id));
+
         }
     }
 }

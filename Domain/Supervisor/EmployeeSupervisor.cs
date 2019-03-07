@@ -29,7 +29,7 @@ namespace Domain.Supervisor
 
                 bus.Publish(new Employee
                 {
-                    //Id =input.Id,
+                    Id = (input.Id > 0) ? input.Id : 0,
                     FirstName = input.FirstName,
                     LastName = input.LastName
 
@@ -42,17 +42,11 @@ namespace Domain.Supervisor
             // throw new NotImplementedException();
         }
 
+
+
         public object GetEmployees(CancellationToken ct = default(CancellationToken))
         {
 
-            //var scanResults = client.Search<ClassName>(s => s
-            //    .From(0)
-            //    .Size(2000)
-            //    .MatchAll()
-            //    .Fields(f => f.Field(fi => fi.propertyName)) //I used field to get only the value I needed rather than getting the whole document
-            //    .SearchType(Elasticsearch.Net.SearchType.Scan)
-            //    .Scroll("5m")
-            //);
 
 
             var response = _IElasticClient.Search<Employee>(
@@ -67,6 +61,28 @@ namespace Domain.Supervisor
 
 
             //  throw new NotImplementedException();
+        }
+
+        public string UpdateEmployee(int id, EmployeeViewModel input)
+        {
+            Employee emp = new Employee { FirstName = input.FirstName, LastName = input.LastName, Id = input.Id };
+            var responseUpdate = _IElasticClient.
+                Update(DocumentPath<Employee>
+                .Id(id),
+                u => u
+               .DocAsUpsert(true)
+               .Doc(emp));
+
+            return responseUpdate.Result.ToString();
+            /// throw new NotImplementedException();
+        }
+
+
+        public string DeleteEmployee(int id)
+        {
+            var result = _IElasticClient.Delete<Employee>(id);
+
+            return result.Result.ToString();
         }
     }
 }

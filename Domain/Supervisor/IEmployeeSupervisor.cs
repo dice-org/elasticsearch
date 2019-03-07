@@ -10,8 +10,8 @@ namespace Domain.Supervisor
     public interface IEmployeeSupervisor
     {
         EmployeeViewModel AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken));
-
-
         object GetEmployees(CancellationToken ct = default(CancellationToken));
+        string UpdateEmployee(int id, EmployeeViewModel input);
+        string DeleteEmployee(int id);
     }
 }

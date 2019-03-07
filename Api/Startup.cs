@@ -32,7 +32,14 @@ namespace Api
             services.AddScoped<IEmployeeSupervisor, EmployeeSupervisor>();
             services.AddScoped<IElasticConnection, ElasticConnection>();
             services.AddElasticsearch(Configuration);
-          
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder => builder.AllowAnyOrigin()
+                                  .AllowAnyMethod()
+                                    .AllowAnyHeader()
+                                   .AllowCredentials());
+            });
 
         }
 
@@ -43,6 +50,12 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials());
+
 
             app.UseMvc();
         }
