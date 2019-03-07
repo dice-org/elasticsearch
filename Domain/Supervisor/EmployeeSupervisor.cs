@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Domain.ConnectionFactory;
 using Domain.Converters;
 using Domain.Entities;
+using Domain.Response;
 using Domain.ViewModels;
 using EasyNetQ.Topology;
 using Nest;
@@ -64,7 +65,21 @@ namespace Domain.Supervisor
             //  throw new NotImplementedException();
         }
 
-        public string UpdateEmployee(int id, EmployeeViewModel input)
+        public ResponseResult UpdateEmployee(int id, EmployeeViewModel input)
+        {
+            ResponseResult response = new ResponseResult { Message = "something wrong happen" };
+            Employee emp = new Employee { firstName = input.firstName, lastName = input.lastName, id = input.id };
+            var responseUpdate = _IElasticClient.
+                Update(DocumentPath<Employee>
+                .Id(id),
+                u => u
+               // .DocAsUpsert(true)
+               .Doc(emp));
+            response.Message = responseUpdate.Result.ToString();
+            return response;
+        }
+
+        public EmployeeViewModel UpdateEmployeeViewmodel(int id, EmployeeViewModel input)
         {
             Employee emp = new Employee { firstName = input.firstName, lastName = input.lastName, id = input.id };
             var responseUpdate = _IElasticClient.
@@ -74,15 +89,18 @@ namespace Domain.Supervisor
                // .DocAsUpsert(true)
                .Doc(emp));
 
-            return responseUpdate.Result.ToString();
+            return input;
         }
 
 
-        public string DeleteEmployee(int id)
+        public ResponseResult DeleteEmployee(int id)
         {
-            var result = _IElasticClient.Delete<Employee>(id);
+            ResponseResult response = new ResponseResult { Message = "something wrong happen" };
 
-            return result.Result.ToString();
+            var deleteResponse = _IElasticClient.Delete<Employee>(id);
+            response.Message = deleteResponse.Result.ToString();
+
+            return response;
         }
 
         public EmployeeViewModel GetEmployeeById(int id, CancellationToken ct = default(CancellationToken))

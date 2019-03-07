@@ -1,4 +1,5 @@
-﻿using Domain.ViewModels;
+﻿using Domain.Response;
+using Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,12 +10,13 @@ namespace Domain.Supervisor
 {
     public interface IEmployeeSupervisor
     {
-        EmployeeViewModel AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken));
-        object GetEmployees(CancellationToken ct = default(CancellationToken));
+         EmployeeViewModel AddEmployee(EmployeeViewModel input, CancellationToken ct = default(CancellationToken));
+         object GetEmployees(CancellationToken ct = default(CancellationToken));
          EmployeeViewModel GetEmployeeById(int id,CancellationToken ct = default(CancellationToken));
 
 
-        string UpdateEmployee(int id, EmployeeViewModel input);
-        string DeleteEmployee(int id);
+        ResponseResult UpdateEmployee(int id, EmployeeViewModel input);
+        EmployeeViewModel UpdateEmployeeViewmodel(int id, EmployeeViewModel input);
+        ResponseResult DeleteEmployee(int id);
     }
 }
