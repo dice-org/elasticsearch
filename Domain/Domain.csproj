@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="EasyNetQ" Version="3.4.0" />
     <PackageReference Include="NEST" Version="6.5.0" />
   </ItemGroup>

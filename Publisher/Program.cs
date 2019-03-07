@@ -31,7 +31,7 @@ namespace Publisher
 
                     bus.Publish(new Employee
                     {
-                        FirstName = input
+                        firstName = input
                     });
                 }
             }

@@ -18,20 +18,20 @@ namespace Data.Repositories
             Employees.Add(new Employee
             {
              //   Id = 1,
-                FirstName = "Spider",
-                LastName = "Man",
+                firstName = "Spider",
+                lastName = "Man",
             });
             Employees.Add(new Employee
             {
              //   Id = 2,
-                FirstName = "Bat",
-                LastName = "Man",
+                firstName = "Bat",
+                lastName = "Man",
             });
             Employees.Add(new Employee
             {
               //  Id = 3,
-                FirstName = "Captin",
-                LastName = "America",
+                firstName = "Captin",
+                lastName = "America",
             });
 
         }

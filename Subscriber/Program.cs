@@ -48,8 +48,8 @@ namespace Subscriber
             AddToElastic(employee);
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Got message: {0}", employee.FirstName);
-            Console.WriteLine("Got message: {0}", employee.LastName);
+            Console.WriteLine("Got message: {0}", employee.firstName);
+            Console.WriteLine("Got message: {0}", employee.lastName);
           //  Console.WriteLine("Got message: {0}", employee.Id);
 
             Console.ResetColor();

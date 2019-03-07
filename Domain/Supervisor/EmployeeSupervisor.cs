@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.ConnectionFactory;
+using Domain.Converters;
 using Domain.Entities;
 using Domain.ViewModels;
 using EasyNetQ.Topology;
@@ -29,9 +30,9 @@ namespace Domain.Supervisor
 
                 bus.Publish(new Employee
                 {
-                    Id = (input.Id > 0) ? input.Id : 0,
-                    FirstName = input.FirstName,
-                    LastName = input.LastName
+                    id = (input.id > 0) ? input.id : 0,
+                    firstName = input.firstName,
+                    lastName = input.lastName
 
                 });
                 //  bus.Dispose();    
@@ -65,16 +66,15 @@ namespace Domain.Supervisor
 
         public string UpdateEmployee(int id, EmployeeViewModel input)
         {
-            Employee emp = new Employee { FirstName = input.FirstName, LastName = input.LastName, Id = input.Id };
+            Employee emp = new Employee { firstName = input.firstName, lastName = input.lastName, id = input.id };
             var responseUpdate = _IElasticClient.
                 Update(DocumentPath<Employee>
                 .Id(id),
                 u => u
-               .DocAsUpsert(true)
+               // .DocAsUpsert(true)
                .Doc(emp));
 
             return responseUpdate.Result.ToString();
-            /// throw new NotImplementedException();
         }
 
 
@@ -83,6 +83,15 @@ namespace Domain.Supervisor
             var result = _IElasticClient.Delete<Employee>(id);
 
             return result.Result.ToString();
+        }
+
+        public EmployeeViewModel GetEmployeeById(int id, CancellationToken ct = default(CancellationToken))
+        {
+            var response = _IElasticClient.Get<Employee>(id);
+            
+            EmployeeViewModel employee = EmplyoeeViewModelConverter.EmployeeConvert(response.Source);
+
+            return employee;
         }
     }
 }

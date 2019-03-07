@@ -33,9 +33,9 @@ namespace Api.Controllers
 
         // GET: api/Employee/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            return new ObjectResult(_employeeSupervisor.GetEmployeeById(id));
         }
 
         // POST: api/Employee
